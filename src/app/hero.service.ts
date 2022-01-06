@@ -49,7 +49,7 @@ export class HeroService {
   /** Get heroes by id, return 'undefined' when not found */
   getHeroNo404(id: number): Observable<Hero> {
     const url = `${this.heroesUrl}/?id=${id}`;
-    return this.http.get<Hero>(url).pipe(
+    return this.http.get<Hero[]>(url).pipe(
       map((heroes) => heroes[0]),
       tap((h) => {
         const outcome = h ? 'fetched' : 'did not find';

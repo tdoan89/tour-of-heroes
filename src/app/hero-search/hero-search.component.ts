@@ -19,9 +19,7 @@ export class HeroSearchComponent implements OnInit {
 
   constructor(
     private heroService: HeroService
-  ) { }
-
-  ngOnInit(): void {
+  ) {
     this.heroes$ = this.searchTerms.pipe(
       // wait 500ms after each keystroke before processing term 
       debounceTime(500),
@@ -32,6 +30,9 @@ export class HeroSearchComponent implements OnInit {
       // switch to new search observable each tim the term changes 
       switchMap((term: string) => this.heroService.searchHeroes(term))
     )
+   }
+
+  ngOnInit(): void {
   }
 
   // Push a search term into observable stream
